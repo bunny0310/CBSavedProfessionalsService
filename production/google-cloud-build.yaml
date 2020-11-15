@@ -1,0 +1,40 @@
+steps:
+  # This step builds the container image.
+  - name: 'gcr.io/cloud-builders/docker'
+    id: Build
+    args:
+    - 'build'
+    - '-t'
+    - 'gcr.io/$PROJECT_ID/saved-professionals-service:v1'
+    - '/workspace/production/'
+
+  # This step pushes the image to Container Registry
+  # The PROJECT_ID and SHORT_SHA variables are automatically
+  # replaced by Cloud Build.
+  - name: 'gcr.io/cloud-builders/docker'
+    id: Push
+    args:
+    - 'push'
+    - 'gcr.io/$PROJECT_ID/saved-professionals-service:v1'
+
+  - name: 'gcr.io/cloud-builders/kubectl'
+    id: Deploy
+    args:
+    - 'delete'
+    - 'deployment'
+    - 'saved-professionals-service'
+    env:
+      - 'CLOUDSDK_COMPUTE_ZONE=us-east1-b'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
+
+
+  - name: 'gcr.io/cloud-builders/kubectl'
+    id: Spin up
+    args:
+    - 'create'
+    - '-f'
+    - '/workspace/production/saved-professionals-service-deployment.yml'
+    env:
+    - 'CLOUDSDK_COMPUTE_ZONE=us-east1-b'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
+ 

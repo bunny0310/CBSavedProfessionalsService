@@ -1,0 +1,10 @@
+task copyApp(type: Copy, dependsOn: build) {
+    from("${buildDir}/libs") {
+        include "*-all.jar"
+        rename { "SavedProfessionalsService.jar" }
+    }
+    from(fileTree("${projectDir}/config/").files) {
+        include "**/*.yml"
+    }
+    into("${rootDir}/local")
+}
