@@ -13,4 +13,8 @@ public class SavedProfessionalsService {
     public List<SavedProfessional> getSavedProfessionals(int userId) {
         return this.savedProfessionalsDAO.getSavedProfessionals(userId);
     }
+
+    public void insertSavedProfessional(SavedProfessional savedProfessional) {
+        this.savedProfessionalsDAO.insertSavedProfessional(savedProfessional);
+    }
 }

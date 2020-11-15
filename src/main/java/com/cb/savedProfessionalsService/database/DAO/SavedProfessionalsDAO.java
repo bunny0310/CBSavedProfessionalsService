@@ -13,7 +13,10 @@ import java.util.List;
 @RegisterMapper(SavedProfessionalMapper.class)
 public interface SavedProfessionalsDAO {
 
-    @SqlQuery("SELECT professionals.firstName, professionals.lastName, professionals.workEmail, professionals.company, professionals.jobTitle, savedProfessionals.id, savedProfessionals.updatedAt, savedProfessionals.timesEmailed FROM savedProfessionals INNER JOIN professionals WHERE professionals.id = savedProfessionals.professionalId AND savedProfessionals.userId = :id")
+    @SqlQuery("SELECT professionals.firstName, professionals.lastName, professionals.workEmail, professionals.id, professionals.company, professionals.jobTitle, savedProfessionals.id, savedProfessionals.updatedAt, savedProfessionals.timesEmailed FROM savedProfessionals INNER JOIN professionals WHERE professionals.id = savedProfessionals.professionalId AND savedProfessionals.userId = :id")
     public List<SavedProfessional> getSavedProfessionals(@Bind("id") final int id);
+
+    @SqlUpdate("INSERT INTO savedProfessionals (professionalId, userId) VALUES (:professionalId, :userId)")
+    public void insertSavedProfessional(@BindBean SavedProfessional savedProfessional);
 
 }

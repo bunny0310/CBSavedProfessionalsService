@@ -22,8 +22,17 @@ public class SavedProfessionalsResource {
 
     @GET()
     @Path("/list/{userId}")
-    public Response getUserTemplates(@PathParam("userId") final int userId) {
+    public Response getSavedProfessionals(@PathParam("userId") final int userId) {
         List<SavedProfessional> SavedProfessionals = this.savedProfessionalsService.getSavedProfessionals(userId);
         return Response.status(200).entity(SavedProfessionals).build();
+    }
+
+    @POST()
+    @Path("/insert")
+    public Response insertSavedProfessionals(List<SavedProfessional> savedProfessionals) {
+        for(SavedProfessional savedProfessional : savedProfessionals) {
+            this.savedProfessionalsService.insertSavedProfessional(savedProfessional);
+        }
+        return Response.status(200).entity("professionals saved successfully").build();
     }
 }

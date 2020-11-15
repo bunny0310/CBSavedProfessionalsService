@@ -9,7 +9,24 @@ public class SavedProfessional extends BaseEntity {
     private String professionalEmail;
     private String templateAlias;
     private int userId;
+    private int professionalId;
     private int count;
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public int getProfessionalId() {
+        return professionalId;
+    }
+
+    public void setProfessionalId(int professionalId) {
+        this.professionalId = professionalId;
+    }
 
     public String getProfessionalName() {
         return professionalName;
@@ -56,12 +73,13 @@ public class SavedProfessional extends BaseEntity {
 
     }
 
-    public SavedProfessional(int id, Timestamp updatedAt, String professionalName, String professionalCompany, String professionalJobTitle, String professionalEmail, int count) {
+    public SavedProfessional(int id, Timestamp updatedAt, String professionalName, String professionalCompany, String professionalJobTitle, String professionalEmail, int count, int professionalId) {
         super(id, updatedAt);
         this.professionalName = professionalName;
         this.professionalCompany = professionalCompany;
         this.professionalJobTitle = professionalJobTitle;
         this.professionalEmail = professionalEmail;
         this.count = count;
+        this.professionalId = professionalId;
     }
 }
