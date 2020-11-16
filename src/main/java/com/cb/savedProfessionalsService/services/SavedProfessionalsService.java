@@ -4,13 +4,14 @@ import com.cb.savedProfessionalsService.database.DAO.SavedProfessionalsDAO;
 import com.cb.savedProfessionalsService.database.models.SavedProfessional;
 
 import java.util.List;
+import java.util.Set;
 
 public class SavedProfessionalsService {
     private SavedProfessionalsDAO savedProfessionalsDAO;
     public SavedProfessionalsService(SavedProfessionalsDAO savedProfessionalsDAO) {
         this.savedProfessionalsDAO = savedProfessionalsDAO;
     }
-    public List<SavedProfessional> getSavedProfessionals(int userId) {
+    public Set<SavedProfessional> getSavedProfessionals(int userId) {
         return this.savedProfessionalsDAO.getSavedProfessionals(userId);
     }
 
