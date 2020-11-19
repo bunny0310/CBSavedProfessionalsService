@@ -57,11 +57,14 @@ public class SavedProfessionalsResource {
 
             //if the set doesn't contain the professional's id, then insert it into the database
             if(!setSP.contains(savedProfessional.getProfessionalId())) {
-                this.savedProfessionalsService.insertSavedProfessional(savedProfessional);
+                int recordId = this.savedProfessionalsService.insertSavedProfessional(savedProfessional);
                 if(!cache.contains(userId)) {
                     cache.put(userId, new HashSet<SavedProfessional>());
                 }
-                cache.get(userId).add(savedProfessional);
+                SavedProfessional latestRecord = this.savedProfessionalsService.getLatestSavedProfessional();
+                if(latestRecord != null) {
+                    cache.get(userId).add(latestRecord);
+                }
             }
         }
         return Response.status(200).entity("professionals saved successfully").build();

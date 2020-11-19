@@ -15,7 +15,12 @@ public class SavedProfessionalsService {
         return this.savedProfessionalsDAO.getSavedProfessionals(userId);
     }
 
-    public void insertSavedProfessional(SavedProfessional savedProfessional) {
-        this.savedProfessionalsDAO.insertSavedProfessional(savedProfessional);
+    public int insertSavedProfessional(SavedProfessional savedProfessional) {
+        return this.savedProfessionalsDAO.insertSavedProfessional(savedProfessional);
+    }
+
+    public SavedProfessional getLatestSavedProfessional() {
+        List<SavedProfessional> list = this.savedProfessionalsDAO.getLatestSavedProfessional();
+        return list.size() == 0 ? null : list.get(0);
     }
 }

@@ -18,6 +18,9 @@ public interface SavedProfessionalsDAO {
     public Set<SavedProfessional> getSavedProfessionals(@Bind("id") final int id);
 
     @SqlUpdate("INSERT INTO savedProfessionals (professionalId, userId) VALUES (:professionalId, :userId)")
-    public void insertSavedProfessional(@BindBean SavedProfessional savedProfessional);
+    public int insertSavedProfessional(@BindBean SavedProfessional savedProfessional);
+
+    @SqlQuery("SELECT professionals.firstName, professionals.lastName, professionals.workEmail, professionals.id, professionals.company, professionals.jobTitle, savedProfessionals.id, savedProfessionals.updatedAt, savedProfessionals.timesEmailed FROM savedProfessionals INNER JOIN professionals WHERE professionals.id = savedProfessionals.professionalId ORDER BY savedProfessionals.id DESC LIMIT 1")
+    public List<SavedProfessional> getLatestSavedProfessional();
 
 }
