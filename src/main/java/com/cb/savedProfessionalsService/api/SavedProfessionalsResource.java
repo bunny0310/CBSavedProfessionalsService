@@ -15,7 +15,7 @@ import java.util.Set;
 @Consumes(MediaType.APPLICATION_JSON + "; charset=utf-8")
 @Produces(MediaType.APPLICATION_JSON)
 public class SavedProfessionalsResource {
-    private LRUCache<Integer, Set<SavedProfessional>> cache = new LRUCache<Integer, Set<SavedProfessional>>(10);
+    //private LRUCache<Integer, Set<SavedProfessional>> cache = new LRUCache<Integer, Set<SavedProfessional>>(10);
     private SavedProfessionalsService savedProfessionalsService;
 
     public SavedProfessionalsResource(SavedProfessionalsService savedProfessionalsService) {
@@ -26,13 +26,13 @@ public class SavedProfessionalsResource {
     @Path("/list/{userId}")
     public Response getSavedProfessionals(@PathParam("userId") final int userId) {
         Set<SavedProfessional> SavedProfessionals;
-        if(cache.contains(userId)) {
-            SavedProfessionals = this.cache.get(userId);
-        }
-        else {
+//        if(cache.contains(userId)) {
+//            SavedProfessionals = this.cache.get(userId);
+//        }
+//        else {
             SavedProfessionals = this.savedProfessionalsService.getSavedProfessionals(userId);
-            cache.put(userId, SavedProfessionals);
-        }
+//            cache.put(userId, SavedProfessionals);
+//        }
         return Response.status(200).entity(SavedProfessionals).build();
     }
 
@@ -47,25 +47,25 @@ public class SavedProfessionalsResource {
             Set<SavedProfessional> setSP;
 
             //if cache contains the userId, then retrieve the set from the cache
-            if(cache.contains(userId)) {
-                setSP = cache.get(userId);
-            }
+//            if(cache.contains(userId)) {
+//                setSP = cache.get(userId);
+//            }
             //otherwise get the set from the database
-            else {
-                setSP = savedProfessionalsService.getSavedProfessionals(userId);
-            }
+//            else {
+              //  setSP = savedProfessionalsService.getSavedProfessionals(userId);
+//            }
 
             //if the set doesn't contain the professional's id, then insert it into the database
-            if(!setSP.contains(savedProfessional.getProfessionalId())) {
+//            if(!setSP.contains(savedProfessional.getProfessionalId())) {
                 int recordId = this.savedProfessionalsService.insertSavedProfessional(savedProfessional);
-                if(!cache.contains(userId)) {
-                    cache.put(userId, new HashSet<SavedProfessional>());
-                }
-                SavedProfessional latestRecord = this.savedProfessionalsService.getLatestSavedProfessional();
-                if(latestRecord != null) {
-                    cache.get(userId).add(latestRecord);
-                }
-            }
+//                if(!cache.contains(userId)) {
+//                    cache.put(userId, new HashSet<SavedProfessional>());
+//                }
+//                SavedProfessional latestRecord = this.savedProfessionalsService.getLatestSavedProfessional();
+//                if(latestRecord != null) {
+//                    cache.get(userId).add(latestRecord);
+//                }
+//            }
         }
         return Response.status(200).entity("professionals saved successfully").build();
     }

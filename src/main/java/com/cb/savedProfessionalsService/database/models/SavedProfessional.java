@@ -73,7 +73,7 @@ public class SavedProfessional extends BaseEntity {
 
     }
 
-    public SavedProfessional(int id, Timestamp updatedAt, String professionalName, String professionalCompany, String professionalJobTitle, String professionalEmail, int count, int professionalId) {
+    public SavedProfessional(int id, Timestamp updatedAt, String professionalName, String professionalCompany, String professionalJobTitle, String professionalEmail, int count, int professionalId, int userId) {
         super(id, updatedAt);
         this.professionalName = professionalName;
         this.professionalCompany = professionalCompany;
@@ -81,5 +81,6 @@ public class SavedProfessional extends BaseEntity {
         this.professionalEmail = professionalEmail;
         this.count = count;
         this.professionalId = professionalId;
+        this.userId = userId;
     }
 }
