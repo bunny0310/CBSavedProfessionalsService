@@ -43,6 +43,6 @@ public class Main extends io.dropwizard.Application<Database> {
         environment.jersey().register(savedProfessionalsResource);
     }
     public static void main(String[] args) throws Exception{
-        new Main().run(args);
+        new Main().run(new String[]{"server", "config/config.yml"});
     }
 }

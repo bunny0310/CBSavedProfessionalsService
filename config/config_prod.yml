@@ -4,10 +4,10 @@ database:
   user: root
 
   # the password
-  password: root
+  password: ishaan123
 
-  # the JDBC URL
-  url: jdbc:mysql://localhost:3306/backend?useLegacyDatetimeCode=false&autoReconnect=true
+  # the JDBC URLx
+  url: jdbc:mysql://database-1.cnx711jywpdh.us-east-2.rds.amazonaws.com:3306/db?useSSL=false
 
   # any properties specific to your JDBC driver:
   properties:
@@ -37,19 +37,25 @@ database:
   # the minimum amount of time an connection must sit idle in the pool before it is eligible for eviction
   minIdleTime: 1 minute
 
+server:
+  type: default
+  applicationConnectors:
+    -   type: http
+        port: 8080
+
   # Logging settings.
-# logging:
-#   level: INFO
-#   loggers:
-#     io.dropwizard: DEBUG
-#     org.eclipse.jetty.servlets: DEBUG
-#     org.hibernate.SQL: ALL
-#     com.udemy.LocationsApplication:
-#       level: ALL,
-#       additive: false
-#       appenders:
-#         - type: console
-#           logFormat: "%red(CDR) [%magenta(%date)] [%thread] [%cyan(%logger{0})]: %message%n"
-#   appenders:
-#     - type: console
-#       logFormat: "%highlight(%-5level) [%magenta(%date)] [%thread] [%cyan(%logger{0})]: %message%n"
+#logging:
+#  level: INFO
+#  loggers:
+#    io.dropwizard: DEBUG
+#    org.eclipse.jetty.servlets: DEBUG
+#    org.hibernate.SQL: ALL
+#    com.udemy.LocationsApplication:
+#      level: ALL,
+#      additive: false
+#      appenders:
+#        - type: console
+#          logFormat: "%red(CDR) [%magenta(%date)] [%thread] [%cyan(%logger{0})]: %message%n"
+#  appenders:
+#    - type: console
+#      logFormat: "%highlight(%-5level) [%magenta(%date)] [%thread] [%cyan(%logger{0})]: %message%n"
