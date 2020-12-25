@@ -23,4 +23,10 @@ public class SavedProfessionalsService {
         List<SavedProfessional> list = this.savedProfessionalsDAO.getLatestSavedProfessional();
         return list.size() == 0 ? null : list.get(0);
     }
+
+    public void updateSP(int id, int tid) {
+        this.savedProfessionalsDAO.updateSP(id, tid);
+        return;
+    }
+
 }

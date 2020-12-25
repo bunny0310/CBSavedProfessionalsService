@@ -23,4 +23,7 @@ public interface SavedProfessionalsDAO {
     @SqlQuery("SELECT professionals.firstName, professionals.lastName, professionals.workEmail, professionals.id, professionals.company, professionals.jobTitle, savedProfessionals.id, savedProfessionals.updatedAt, savedProfessionals.timesEmailed FROM savedProfessionals INNER JOIN professionals WHERE professionals.id = savedProfessionals.professionalId ORDER BY savedProfessionals.id DESC LIMIT 1")
     public List<SavedProfessional> getLatestSavedProfessional();
 
+    @SqlUpdate("UPDATE savedProfessionals SET lastEmailed=CURRENT_TIMESTAMP(), timesEmailed=timesEmailed + 1, lastCopyUsed=:tid WHERE id=:id")
+    public void updateSP(@Bind("id") final int id, @Bind("tid") final int tid);
+
 }

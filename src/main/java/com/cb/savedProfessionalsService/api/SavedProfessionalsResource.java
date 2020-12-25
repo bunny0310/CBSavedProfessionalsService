@@ -69,4 +69,13 @@ public class SavedProfessionalsResource {
         }
         return Response.status(200).entity("professionals saved successfully").build();
     }
+
+    @POST()
+    @Path("/update")
+    public Response updateSavedProfessional(SavedProfessional sp) {
+        int id = sp.getId();
+        int tid = sp.getTemplateId();
+        this.savedProfessionalsService.updateSP(id, tid);
+        return Response.status(200).entity("{\"message\": \"success\"}").build();
+    }
 }

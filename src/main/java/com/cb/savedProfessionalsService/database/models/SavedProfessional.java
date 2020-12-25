@@ -11,6 +11,7 @@ public class SavedProfessional extends BaseEntity {
     private int userId;
     private int professionalId;
     private int count;
+    private int templateId;
 
     public int getUserId() {
         return userId;
@@ -18,6 +19,14 @@ public class SavedProfessional extends BaseEntity {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public int getTemplateId() {
+        return templateId;
+    }
+
+    public void setTemplateId(int templateId) {
+        this.templateId = templateId;
     }
 
     public int getProfessionalId() {
