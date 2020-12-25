@@ -20,7 +20,9 @@ public class SavedProfessionalMapper implements ResultSetMapper<SavedProfessiona
                 r.getString("professionals.workEmail"),
                 r.getInt("savedProfessionals.timesEmailed"),
                 r.getInt("professionals.id"),
-                r.getInt("savedProfessionals.userId")
+                r.getInt("savedProfessionals.userId"),
+                r.getTimestamp("lastEmailed"),
+                r.getInt("lastCopyUsed")
         );
 
         return savedProfessional;

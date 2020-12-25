@@ -12,6 +12,8 @@ public class SavedProfessional extends BaseEntity {
     private int professionalId;
     private int count;
     private int templateId;
+    private Timestamp lastEmailed;
+    private int lastCopy;
 
     public int getUserId() {
         return userId;
@@ -27,6 +29,22 @@ public class SavedProfessional extends BaseEntity {
 
     public void setTemplateId(int templateId) {
         this.templateId = templateId;
+    }
+
+    public int getLastCopy() {
+        return lastCopy;
+    }
+
+    public void setLastCopy(int lastCopy) {
+        this.lastCopy = lastCopy;
+    }
+
+    public Timestamp getLastEmailedlastEmailed() {
+        return lastEmailed;
+    }
+
+    public void setLastEmailed(Timestamp lastEmailed) {
+        this.lastEmailed = lastEmailed;
     }
 
     public int getProfessionalId() {
@@ -82,7 +100,7 @@ public class SavedProfessional extends BaseEntity {
 
     }
 
-    public SavedProfessional(int id, Timestamp updatedAt, String professionalName, String professionalCompany, String professionalJobTitle, String professionalEmail, int count, int professionalId, int userId) {
+    public SavedProfessional(int id, Timestamp updatedAt, String professionalName, String professionalCompany, String professionalJobTitle, String professionalEmail, int count, int professionalId, int userId, Timestamp lastEmailed, int lastCopy) {
         super(id, updatedAt);
         this.professionalName = professionalName;
         this.professionalCompany = professionalCompany;
@@ -91,5 +109,7 @@ public class SavedProfessional extends BaseEntity {
         this.count = count;
         this.professionalId = professionalId;
         this.userId = userId;
+        this.lastCopy = lastCopy;
+        this.lastEmailed = lastEmailed;
     }
 }
