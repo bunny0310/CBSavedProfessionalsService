@@ -1,0 +1,42 @@
+{
+  "name": "savedprofessionalsmicroservice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^23.6.0"
+  },
+  "dependencies": {
+    "@dagrejs/graphlib": "^2.1.4",
+    "axios": "^0.21.1",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "fetch": "^1.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "kors": "^1.0.0",
+    "moment": "^2.29.1",
+    "mongoose": "^5.11.9",
+    "mysql": "^2.18.1",
+    "node-fetch": "^2.6.0",
+    "nodemon": "^2.0.7",
+    "parse-json": "^5.0.0",
+    "parse-json-object-as-map": "^1.2.0",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7",
+    "request": "^2.88.2",
+    "requests": "^0.3.0",
+    "session": "^0.1.0",
+    "sha-256": "^1.0.3",
+    "sha256": "^0.2.0"
+  }
+}
