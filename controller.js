@@ -4,7 +4,7 @@ const axios = require('axios');
 
 const getSavedProfessional = async (id) => {
     try {
-        const savedProf = await savedProfessional.findOne({"_id": id});
+        const savedProf = await savedProfessional.find({}).populate('professionalId');
         if(savedProf === undefined || savedProf === null) {
             return null;
         }
